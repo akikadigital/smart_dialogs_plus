@@ -111,11 +111,11 @@ class SmartAlertDialog extends StatelessWidget {
   String _resolveAnimation(SmartProgressState state) {
     switch (state) {
       case SmartProgressState.success:
-        return 'assets/success_tick.json';
+        return 'assets/success.json';
       case SmartProgressState.failure:
-        return 'assets/error_x.json';
+        return 'assets/error.json';
       case SmartProgressState.warning:
-        return 'assets/warning_alert.json';
+        return 'assets/warning.json';
       case SmartProgressState.info:
         return 'assets/info_alert.json';
       default:

@@ -64,7 +64,7 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
         break;
       case SmartProgressState.success:
         content = Lottie.asset(
-          'assets/success_tick.json',
+          'assets/success.json',
           // DialogAssets.success,
           width: widget.size,
           height: widget.size,
