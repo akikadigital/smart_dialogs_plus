@@ -113,7 +113,7 @@ class SmartAlertDialog extends StatelessWidget {
       case SmartProgressState.success:
         return 'assets/success_tick.json';
       case SmartProgressState.failure:
-        return 'assets/failure_x.json';
+        return 'assets/error_x.json';
       case SmartProgressState.warning:
         return 'assets/warning_alert.json';
       case SmartProgressState.info:
