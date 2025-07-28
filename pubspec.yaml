@@ -31,10 +31,6 @@ flutter:
 topics:
   - flutter
   - dialogs
-  - toastr
-  - animated
-  - animated_dialogs
   - progress
   - snackbar
   - alerts
-  - feedback
