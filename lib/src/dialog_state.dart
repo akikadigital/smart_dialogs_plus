@@ -11,4 +11,7 @@ enum SmartProgressState {
 
   /// Warning animation (!)
   warning,
+
+  /// Info animation (ℹ️) - Optional, can be used for informational messages
+  info,
 }

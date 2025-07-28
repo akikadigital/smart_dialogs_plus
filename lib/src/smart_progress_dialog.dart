@@ -92,7 +92,6 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            content,
             if (widget.message != null && widget.message!.isNotEmpty) ...[
               const SizedBox(height: 16),
               Text(

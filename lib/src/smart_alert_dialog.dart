@@ -1,0 +1,114 @@
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
+import 'dialog_state.dart';
+
+class SmartAlertDialog extends StatelessWidget {
+  final String title;
+  final String message;
+  final SmartProgressState state;
+  final VoidCallback? onConfirm;
+  final VoidCallback? onCancel;
+  final String confirmText;
+  final String cancelText;
+  final bool showCancel;
+  final Color? color;
+  final bool barrierDismissible;
+
+  const SmartAlertDialog({
+    Key? key,
+    required this.title,
+    required this.message,
+    this.state = SmartProgressState.info,
+    this.onConfirm,
+    this.onCancel,
+    this.confirmText = "OK",
+    this.cancelText = "Cancel",
+    this.showCancel = true,
+    this.color,
+    this.barrierDismissible = true,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color accent = color ?? _resolveColor(state);
+    String animationAsset = _resolveAnimation(state);
+
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      insetPadding: const EdgeInsets.all(24),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Lottie.asset(animationAsset, width: 100, height: 100),
+            const SizedBox(height: 8),
+            Text(title,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 18, color: accent)),
+            const SizedBox(height: 12),
+            Text(message,
+                style: const TextStyle(fontSize: 14),
+                textAlign: TextAlign.center),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                if (showCancel)
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      onCancel?.call();
+                    },
+                    child: Text(cancelText),
+                  ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(backgroundColor: accent),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    onConfirm?.call();
+                  },
+                  child: Text(confirmText),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Color _resolveColor(SmartProgressState state) {
+    switch (state) {
+      case SmartProgressState.success:
+        return Colors.green;
+      case SmartProgressState.failure:
+        return Colors.red;
+      case SmartProgressState.warning:
+        return Colors.orange;
+      case SmartProgressState.info:
+        return Colors.blue;
+      default:
+        return Colors.teal;
+    }
+  }
+
+  String _resolveAnimation(SmartProgressState state) {
+    switch (state) {
+      case SmartProgressState.success:
+        return 'assets/success_tick.json';
+      case SmartProgressState.failure:
+        return 'assets/failure_x.json';
+      case SmartProgressState.warning:
+        return 'assets/warning_alert.json';
+      case SmartProgressState.info:
+        return 'assets/info_alert.json';
+      default:
+        return 'assets/info_alert.json';
+    }
+  }
+}
+
+// Add this to SmartProgressState if not already there:
+// info,

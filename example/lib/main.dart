@@ -86,6 +86,18 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     );
   }
 
+  void _showAlertDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => SmartAlertDialog(
+        title: "Delete Item",
+        message: "Are you sure you want to delete this?",
+        state: SmartProgressState.warning,
+        onConfirm: () => print("Confirmed"),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,6 +125,10 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
                 ElevatedButton(
                   onPressed: _showSnackBar,
                   child: const Text("Show Snackbar"),
+                ),
+                ElevatedButton(
+                  onPressed: _showAlertDialog,
+                  child: const Text("Show Alert Dialog"),
                 ),
               ],
             ),
