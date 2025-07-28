@@ -5,7 +5,9 @@ import 'dialog_state.dart';
 
 class SmartAlertDialog extends StatelessWidget {
   final String title;
+  final double? titleFontSize;
   final String message;
+  final double? messageFontSize;
   final SmartProgressState state;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
@@ -18,7 +20,9 @@ class SmartAlertDialog extends StatelessWidget {
   const SmartAlertDialog({
     Key? key,
     required this.title,
+    this.titleFontSize = 18.0,
     required this.message,
+    this.messageFontSize = 14.0,
     this.state = SmartProgressState.info,
     this.onConfirm,
     this.onCancel,
@@ -46,10 +50,12 @@ class SmartAlertDialog extends StatelessWidget {
             const SizedBox(height: 8),
             Text(title,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 18, color: accent)),
+                    fontWeight: FontWeight.bold,
+                    fontSize: titleFontSize,
+                    color: accent)),
             const SizedBox(height: 12),
             Text(message,
-                style: const TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: messageFontSize),
                 textAlign: TextAlign.center),
             const SizedBox(height: 20),
             Row(
@@ -109,6 +115,3 @@ class SmartAlertDialog extends StatelessWidget {
     }
   }
 }
-
-// Add this to SmartProgressState if not already there:
-// info,

@@ -91,7 +91,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
       context: context,
       builder: (_) => SmartAlertDialog(
         title: "Delete Item",
+        titleFontSize: 28,
         message: "Are you sure you want to delete this?",
+        messageFontSize: 24,
         state: SmartProgressState.warning,
         onConfirm: () => print("Confirmed"),
       ),
