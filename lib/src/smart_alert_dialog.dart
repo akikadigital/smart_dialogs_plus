@@ -16,6 +16,8 @@ class SmartAlertDialog extends StatelessWidget {
   final bool showCancel;
   final Color? color;
   final bool barrierDismissible;
+  final bool? animateAsset;
+  final bool? loopAnimation;
 
   const SmartAlertDialog({
     Key? key,
@@ -31,6 +33,8 @@ class SmartAlertDialog extends StatelessWidget {
     this.showCancel = true,
     this.color,
     this.barrierDismissible = true,
+    this.animateAsset = true,
+    this.loopAnimation = true,
   }) : super(key: key);
 
   @override
@@ -46,7 +50,11 @@ class SmartAlertDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Lottie.asset(animationAsset, width: 100, height: 100),
+            Lottie.asset(animationAsset,
+                width: 100,
+                height: 100,
+                animate: animateAsset,
+                repeat: loopAnimation),
             const SizedBox(height: 8),
             Text(title,
                 style: TextStyle(

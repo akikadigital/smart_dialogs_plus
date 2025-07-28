@@ -1,39 +1,161 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Smart Dialogs Plus
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+**Smart Dialogs Plus** is a complete Flutter UI feedback toolkit that combines animated dialogs, alerts, snackbars, pull-to-refresh indicators, and infinite scroll loaders. Built for modern apps that value clean, intuitive, and reactive feedback for every user interaction.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+![Smart Dialogs Plus Banner](assets/logo.png)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+---
 
-## Features
+## ✨ Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+* ✅ `SmartProgressDialog` with animations for loading, success, failure, and warning states
+* ⚠️ `SmartAlertDialog` for confirmations, info, and warnings
+* 🍞 `SmartSnackBar` for toast-like user feedback with flexible placement
+* 🔁 `SmartRefreshIndicator` to wrap scroll views with pull-to-refresh
+* 📆 `SmartListLoader` to append a loader during infinite scroll
+* 🎮 `SmartProgressController` to manage dialog state transitions programmatically
+* 🎨 Full customization of color, message, placement, and icons
 
-## Getting started
+---
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## 🚀 Installation
 
-## Usage
+Add to your `pubspec.yaml`:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  smart_dialogs_plus: ^0.0.1
 ```
 
-## Additional information
+Import into your Dart files:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+import 'package:smart_dialogs_plus/smart_dialogs_plus.dart';
+```
+
+---
+
+## 🧠 Usage
+
+### 1. Show Progress Dialog with Controller
+
+```dart
+final controller = SmartProgressController();
+controller.attach(context);
+
+controller.showLoading("Please wait...");
+await Future.delayed(Duration(seconds: 2));
+controller.showSuccess("All done!");
+```
+
+---
+
+### 2. Inline Progress Dialog
+
+```dart
+showDialog(
+  context: context,
+  builder: (_) => SmartProgressDialog(
+    state: SmartProgressState.warning,
+    message: "Something might be wrong.",
+    color: Colors.orange,
+  ),
+);
+```
+
+---
+
+### 3. Show Alert Dialog
+
+```dart
+showDialog(
+  context: context,
+  builder: (_) => SmartAlertDialog(
+    title: "Confirm Logout",
+    message: "Are you sure you want to log out?",
+    state: SmartProgressState.warning,
+    onConfirm: () => print("User confirmed"),
+  ),
+);
+```
+
+---
+
+### 4. Show Custom Snackbar
+
+```dart
+SmartSnackBar.show(
+  context,
+  "Item deleted successfully",
+  state: SmartProgressState.success,
+  position: SnackBarPosition.top,
+  backgroundColor: Colors.green,
+);
+```
+
+---
+
+### 5. Load More in Infinite Scroll List
+
+```dart
+SmartListLoader(isLoading: isLoadingMore)
+```
+
+---
+
+### 6. Pull to Refresh Integration
+
+```dart
+SmartRefreshIndicator(
+  onRefresh: _refreshData,
+  child: ListView.builder(...),
+)
+```
+
+---
+
+## 📂 File Structure
+
+```bash
+lib/
+├── smart_dialogs_plus.dart             # Export entry
+└── src/
+    ├── smart_alert_dialog.dart         # Alert dialog with confirm/cancel
+    ├── smart_progress_dialog.dart      # Animated progress feedback
+    ├── smart_snack_bar.dart            # Flexible snackbar
+    ├── smart_refresh_indicator.dart    # Pull to refresh wrapper
+    ├── smart_list_loader.dart          # Infinite scroll loader
+    ├── smart_progress_controller.dart  # Controller
+    └── dialog_state.dart               # Enum of states
+```
+
+---
+
+## 📸 Screenshots
+
+| Type      | Preview                        |
+| --------- | ------------------------------ |
+| Loading   | ![](screenshots/loading.png)   |
+| Success   | ![](screenshots/success.png)   |
+| Warning   | ![](screenshots/warning.png)   |
+| Error     | ![](screenshots/error.png)     |
+| Snackbar  | ![](screenshots/snackbar.png)  |
+| Alert     | ![](screenshots/alert.png)     |
+| Refresh   | ![](screenshots/refresh.png)   |
+| Load More | ![](screenshots/load_more.png) |
+
+---
+
+## 📄 License
+
+MIT License © 2025 Akika Digital
+
+---
+
+## 💡 Contributing
+
+Got ideas for more widgets or improvements? Submit an issue or pull request on GitHub. Let’s make feedback in Flutter apps smarter — together!
+
+---
+
+> **Smart Dialogs Plus** — One toolkit to handle all user feedback in Flutter apps.

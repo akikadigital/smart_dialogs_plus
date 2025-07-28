@@ -95,6 +95,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
         message: "Are you sure you want to delete this?",
         messageFontSize: 24,
         state: SmartProgressState.warning,
+        loopAnimation: false,
         onConfirm: () => print("Confirmed"),
       ),
     );
