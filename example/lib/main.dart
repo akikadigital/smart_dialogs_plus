@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_progress_dialog/smart_dialogs_plus.dart';
+import 'package:smart_dialogs_plus/smart_dialogs_plus.dart';
 
 void main() {
   runApp(const ExampleApp());
@@ -89,7 +89,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Smart Dialog Example')),
+      appBar: AppBar(title: const Text('Smart Dialogs Plus Example')),
       body: Column(
         children: [
           SingleChildScrollView(

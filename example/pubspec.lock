@@ -75,7 +75,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  smart_progress_dialog:
+  smart_dialogs_plus:
     dependency: "direct main"
     description:
       path: ".."
