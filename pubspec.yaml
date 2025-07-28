@@ -1,0 +1,37 @@
+name: smart_dialogs_plus
+description: >
+  A full-featured feedback and dialog toolkit for Flutter, including animated progress dialogs,
+  snackbars, alerts, confirmation dialogs, infinite scroll loaders, and pull-to-refresh support.
+version: 0.0.1
+homepage: https://pub.dev/packages/smart_dialogs_plus
+repository: https://github.com/akikadigital/smart_dialogs_plus
+issue_tracker: https://github.com/akikadigital/smart_dialogs_plus/issues
+documentation: https://pub.dev/packages/smart_dialogs_plus
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  lottie: ^2.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - screenshots/
+
+topics:
+  - flutter
+  - dialogs
+  - progress
+  - snackbar
+  - alerts
+  - feedback
