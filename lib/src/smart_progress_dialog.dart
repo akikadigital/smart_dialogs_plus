@@ -64,7 +64,8 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
         break;
       case SmartProgressState.success:
         content = Lottie.asset(
-          DialogAssets.success,
+          'assets/success_tick.json',
+          // DialogAssets.success,
           width: widget.size,
           height: widget.size,
         );
@@ -83,6 +84,14 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
           height: widget.size,
         );
         break;
+      case SmartProgressState.info:
+        // TODO: Handle this case.
+        content = Lottie.asset(
+          DialogAssets.info,
+          width: widget.size,
+          height: widget.size,
+        );
+        break;
     }
 
     return Dialog(
@@ -93,6 +102,7 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            content,
             if (widget.message != null && widget.message!.isNotEmpty) ...[
               const SizedBox(height: 16),
               Text(
