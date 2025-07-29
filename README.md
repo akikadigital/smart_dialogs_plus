@@ -63,6 +63,16 @@ SmartAlertDialog.show(
     onConfirm: () {
       // Handle confirmation
     },
+    alertDialogTheme: SmartAlertDialogTheme( // Custom theme for the alert dialog
+        backgroundColor: Colors.white, // Background color
+        titleTextColor: Colors.black, // Title text color
+        messageTextColor: Colors.grey, // Message text color
+        buttonsBorderRadius: BorderRadius.circular(8), // Button border radius
+        confirmButtonTextColor: Colors.white, // Confirm button text color
+        confirmButtonBackgroundColor: Colors.blue, // Confirm button background color
+        cancelButtonTextColor: Colors.white, // Cancel button text color
+        cancelButtonBackgroundColor: Colors.red, // Cancel button background color
+    }
 );
 ```
 

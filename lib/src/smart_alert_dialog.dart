@@ -48,11 +48,12 @@ class SmartAlertDialog {
   }
 }
 
+/// A theme class for customizing the appearance of the SmartAlertDialog.
 class SmartAlertDialogTheme {
   final Color? backgroundColor;
   final Color? titleTextColor;
   final Color? messageTextColor;
-  final double? buttonsBorderRadius;
+  final BorderRadius? buttonsBorderRadius;
   final Color? confirmButtonTextColor;
   final Color? confirmButtonBackgroundColor;
   final Color? cancelButtonTextColor;
@@ -69,6 +70,7 @@ class SmartAlertDialogTheme {
       this.cancelButtonBackgroundColor});
 }
 
+/// A widget that displays a customizable alert dialog with animations.
 class SmartAlertDialogWidget extends StatelessWidget {
   final String title;
   final double? titleFontSize;
@@ -150,9 +152,9 @@ class SmartAlertDialogWidget extends StatelessWidget {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
+                                  borderRadius:
                                       alertDialogTheme?.buttonsBorderRadius ??
-                                          8)),
+                                          BorderRadius.circular(8)),
                               backgroundColor: alertDialogTheme
                                       ?.cancelButtonBackgroundColor ??
                                   accent,
@@ -177,8 +179,9 @@ class SmartAlertDialogWidget extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                alertDialogTheme?.buttonsBorderRadius ?? 8)),
+                            borderRadius:
+                                alertDialogTheme?.buttonsBorderRadius ??
+                                    BorderRadius.circular(8)),
                         backgroundColor:
                             alertDialogTheme?.confirmButtonBackgroundColor ??
                                 accent,

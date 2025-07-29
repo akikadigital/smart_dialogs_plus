@@ -102,6 +102,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
       type: SmartAlertType.warning,
       loopAnimation: false,
       alertDialogTheme: SmartAlertDialogTheme(
+        buttonsBorderRadius: BorderRadius.circular(8),
         backgroundColor: Colors.green,
         titleTextColor: Colors.white,
         messageTextColor: Colors.grey[700],

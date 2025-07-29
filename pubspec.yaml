@@ -24,6 +24,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/smart_dialogs_plus/
     - screenshots/
 
 topics:
