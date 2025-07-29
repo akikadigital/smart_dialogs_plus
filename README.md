@@ -22,7 +22,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_dialogs_plus: ^0.0.3
+  smart_dialogs_plus: ^0.0.4
 ```
 
 Import into your Dart files:
