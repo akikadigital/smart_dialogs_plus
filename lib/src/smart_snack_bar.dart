@@ -7,6 +7,7 @@ class SmartSnackBar {
   static void show(
     BuildContext context,
     String message, {
+    String? title,
     SmartSnackBarType type = SmartSnackBarType.success,
     SnackBarDuration duration = SnackBarDuration.short,
     Color? backgroundColor,
@@ -18,7 +19,24 @@ class SmartSnackBar {
     Color closeIconColor = Colors.white,
   }) {
     final snackBar = SnackBar(
-      content: Text(message),
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: title != null && title.isNotEmpty,
+            child: Column(
+              children: [
+                Text(
+                  title ?? '',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 4),
+              ],
+            ),
+          ),
+          Text(message)
+        ],
+      ),
       backgroundColor: backgroundColor ?? getColor(type),
       duration: getDuration(duration),
       behavior: behavior,

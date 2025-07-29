@@ -73,15 +73,28 @@ SmartAlertDialog.show(
 ### 3. Show Alert Dialog
 
 ```dart
-showDialog(
-  context: context,
-  builder: (_) => SmartAlertDialog(
-    title: "Confirm Logout",
-    message: "Are you sure you want to log out?",
-    state: SmartProgressState.warning,
-    onConfirm: () => print("User confirmed"),
-  ),
+SmartAlertDialog.showDialog(
+    context, { // Build context
+    title: "Alert Title", // Custom title
+    titleFontSize: 28, // Custom title font size
+    message: "This is an alert message.", // Custom message
+    messageFontSize: 24, // Custom message font size
+    type: SmartAlertType.info, // Alert type: info, warning, error, success
+    onConfirm: () { // Optional callback for confirm action
+      // Handle confirmation
+    },
+    onCancel: () { // Optional callback for cancel action
+      // Handle cancellation
+    },
+    confirmText: "OK", // Custom button texts
+    cancelText: "Cancel", // Custom button texts
+    showCancel: true, // Show cancel button
+    color: Colors.blue, // Custom color for the dialog
+    barrierDismissible: true, // Allow dismissing by tapping outside
+    animateAsset: true, // Show animated asset
+    loopAnimation: true, // Loop the animation
 );
+
 ```
 
 ---
@@ -90,11 +103,24 @@ showDialog(
 
 ```dart
 SmartSnackBar.show(
-    context, // Build context
-    "This is a snackbar message", // Message text
-    type: SmartSnackBarType.warning, // Type: success, error, warning, info
-    duration: SnackBarDuration.long, // Duration: short, long, infinite
+    context, message, {
+    title: "Hello Title!",
+    type: SmartSnackBarType.success,
+    duration: SnackBarDuration.short, // Duration of the snackbar: short, long, or indefinite
     backgroundColor: Colors.green, // Custom background color
+    behavior: SnackBarBehavior.floating, // Floating or fixed position
+    action: SnackBarAction( // Optional action button
+      label: "Undo",
+      onPressed: () {
+        // Handle action
+      },
+    ),
+    onClose: () { // Optional callback when snackbar is closed
+      // Handle close
+    },
+    position: SnackBarPosition.bottom, // Position of the snackbar: top or bottom
+    showCloseIcon: false, // Show close icon
+    closeIconColor: Colors.white, // Color of the close icon
 );
 ```
 

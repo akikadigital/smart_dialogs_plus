@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * Updates package for better performance and stability.
+
+## 0.0.3
+
+* Updates alert dialog to support custom title and message font sizes.

@@ -85,6 +85,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
       backgroundColor: Colors.red,
     );
     SmartSnackBar.show(context, "This is a snackbar message",
+        title: 'Some title',
         type: SmartSnackBarType.warning,
         duration: SnackBarDuration.indefinite,
         backgroundColor: Colors.green,
