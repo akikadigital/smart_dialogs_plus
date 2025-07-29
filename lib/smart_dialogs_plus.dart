@@ -1,6 +1,6 @@
 library smart_dialogs_plus;
 
-export 'src/dialog_state.dart';
+export 'src/enums.dart';
 export 'src/smart_alert_dialog.dart';
 export 'src/smart_list_loader.dart';
 export 'src/smart_progress_controller.dart';

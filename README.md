@@ -24,7 +24,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_dialogs_plus: ^0.0.2
+  smart_dialogs_plus: ^0.0.3
 ```
 
 Import into your Dart files:
@@ -53,13 +53,18 @@ controller.showSuccess("All done!");
 ### 2. Inline Progress Dialog
 
 ```dart
-showDialog(
-  context: context,
-  builder: (_) => SmartProgressDialog(
-    state: SmartProgressState.warning,
-    message: "Something might be wrong.",
-    color: Colors.orange,
-  ),
+
+SmartAlertDialog.show(
+    context, // Build context
+    title: "Alert Title", // Custom title
+    titleFontSize: 28, // Custom title font size
+    message: "Alert message goes here.", // Custom message
+    messageFontSize: 24, // Custom message font size
+    type: SmartAlertType.warning, // Alert type: warning, error, success, info
+    loopAnimation: false, // Enable/disable looping animation
+    onConfirm: () {
+      // Handle confirmation
+    },
 );
 ```
 
@@ -85,11 +90,11 @@ showDialog(
 
 ```dart
 SmartSnackBar.show(
-  context,
-  "Item deleted successfully",
-  state: SmartProgressState.success,
-  position: SnackBarPosition.top,
-  backgroundColor: Colors.green,
+    context, // Build context
+    "This is a snackbar message", // Message text
+    type: SmartSnackBarType.warning, // Type: success, error, warning, info
+    duration: SnackBarDuration.long, // Duration: short, long, infinite
+    backgroundColor: Colors.green, // Custom background color
 );
 ```
 
@@ -126,7 +131,7 @@ lib/
     ├── smart_refresh_indicator.dart    # Pull to refresh wrapper
     ├── smart_list_loader.dart          # Infinite scroll loader
     ├── smart_progress_controller.dart  # Controller
-    └── dialog_state.dart               # Enum of states
+    └── enums.dart               # Enum of states
 ```
 
 ---

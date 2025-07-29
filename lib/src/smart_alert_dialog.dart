@@ -1,14 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import 'dialog_state.dart';
+import 'enums.dart';
 
-class SmartAlertDialog extends StatelessWidget {
+class SmartAlertDialog {
+  static void show(
+    BuildContext context, {
+    required String title,
+    double? titleFontSize,
+    required String message,
+    double? messageFontSize,
+    SmartAlertType type = SmartAlertType.info,
+    VoidCallback? onConfirm,
+    VoidCallback? onCancel,
+    String confirmText = "OK",
+    String cancelText = "Cancel",
+    bool showCancel = true,
+    Color? color,
+    bool barrierDismissible = true,
+    bool? animateAsset = true,
+    bool? loopAnimation = true,
+  }) {
+    showDialog(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (BuildContext context) {
+        return SmartAlertDialogWidget(
+          title: title,
+          titleFontSize: titleFontSize,
+          message: message,
+          messageFontSize: messageFontSize,
+          type: type,
+          onConfirm: onConfirm,
+          onCancel: onCancel,
+          confirmText: confirmText,
+          cancelText: cancelText,
+          showCancel: showCancel,
+          color: color,
+          animateAsset: animateAsset ?? true,
+          loopAnimation: loopAnimation ?? true,
+        );
+      },
+    );
+  }
+}
+
+class SmartAlertDialogWidget extends StatelessWidget {
   final String title;
   final double? titleFontSize;
   final String message;
   final double? messageFontSize;
-  final SmartProgressState state;
+  final SmartAlertType type;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
   final String confirmText;
@@ -19,13 +61,13 @@ class SmartAlertDialog extends StatelessWidget {
   final bool? animateAsset;
   final bool? loopAnimation;
 
-  const SmartAlertDialog({
+  const SmartAlertDialogWidget({
     Key? key,
     required this.title,
     this.titleFontSize = 18.0,
     required this.message,
     this.messageFontSize = 14.0,
-    this.state = SmartProgressState.info,
+    this.type = SmartAlertType.info,
     this.onConfirm,
     this.onCancel,
     this.confirmText = "OK",
@@ -39,8 +81,8 @@ class SmartAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color accent = color ?? _resolveColor(state);
-    String animationAsset = _resolveAnimation(state);
+    Color accent = color ?? _resolveColor(type);
+    String animationAsset = _resolveAnimation(type);
 
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -93,30 +135,30 @@ class SmartAlertDialog extends StatelessWidget {
     );
   }
 
-  Color _resolveColor(SmartProgressState state) {
-    switch (state) {
-      case SmartProgressState.success:
+  Color _resolveColor(SmartAlertType type) {
+    switch (type) {
+      case SmartAlertType.success:
         return Colors.green;
-      case SmartProgressState.failure:
+      case SmartAlertType.error:
         return Colors.red;
-      case SmartProgressState.warning:
+      case SmartAlertType.warning:
         return Colors.orange;
-      case SmartProgressState.info:
+      case SmartAlertType.info:
         return Colors.blue;
       default:
         return Colors.teal;
     }
   }
 
-  String _resolveAnimation(SmartProgressState state) {
-    switch (state) {
-      case SmartProgressState.success:
+  String _resolveAnimation(SmartAlertType type) {
+    switch (type) {
+      case SmartAlertType.success:
         return 'assets/success.json';
-      case SmartProgressState.failure:
+      case SmartAlertType.error:
         return 'assets/error.json';
-      case SmartProgressState.warning:
+      case SmartAlertType.warning:
         return 'assets/warning.json';
-      case SmartProgressState.info:
+      case SmartAlertType.info:
         return 'assets/info_alert.json';
       default:
         return 'assets/info_alert.json';

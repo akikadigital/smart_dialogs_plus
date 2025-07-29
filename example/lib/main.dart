@@ -80,30 +80,30 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     SmartSnackBar.show(
       context,
       "This is a snackbar message",
-      state: SmartProgressState.warning,
-      duration: const Duration(seconds: 3),
+      type: SmartSnackBarType.warning,
+      duration: SnackBarDuration.short,
       backgroundColor: Colors.red,
     );
-    SmartSnackBar.show(
-      context,
-      "This is a snackbar message",
-      state: SmartProgressState.warning,
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.green,
-    );
+    SmartSnackBar.show(context, "This is a snackbar message",
+        type: SmartSnackBarType.warning,
+        duration: SnackBarDuration.indefinite,
+        backgroundColor: Colors.green,
+        showCloseIcon: true);
   }
 
   void _showAlertDialog() {
-    showDialog(
-      context: context,
-      builder: (_) => SmartAlertDialog(
-        title: "Delete Item",
-        titleFontSize: 28,
-        message: "Are you sure you want to delete this?",
-        messageFontSize: 24,
-        state: SmartProgressState.warning,
-        loopAnimation: false,
-        onConfirm: () => print("Confirmed"),
+    SmartAlertDialog.show(
+      context,
+      title: "Delete Item",
+      titleFontSize: 28,
+      message: "Are you sure you want to delete this?",
+      messageFontSize: 24,
+      type: SmartAlertType.warning,
+      loopAnimation: false,
+      onConfirm: () => SmartSnackBar.show(
+        context,
+        "Item deleted successfully",
+        type: SmartSnackBarType.success,
       ),
     );
   }

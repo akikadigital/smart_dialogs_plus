@@ -1,42 +1,31 @@
 import 'package:flutter/material.dart';
 
-import 'dialog_state.dart';
+import 'enums.dart';
 
-/// A customizable snackbar utility for quick user feedback.
+/// A customizable snack bar utility for quick user feedback.
 class SmartSnackBar {
   static void show(
     BuildContext context,
     String message, {
-    SmartProgressState state = SmartProgressState.success,
-    Duration duration = const Duration(seconds: 3),
+    SmartSnackBarType type = SmartSnackBarType.success,
+    SnackBarDuration duration = SnackBarDuration.short,
     Color? backgroundColor,
     SnackBarBehavior behavior = SnackBarBehavior.floating,
     SnackBarAction? action,
     SnackBarClosedReason? Function()? onClose,
     SnackBarPosition position = SnackBarPosition.bottom,
+    bool showCloseIcon = false,
+    Color closeIconColor = Colors.white,
   }) {
-    Color defaultColor;
-    switch (state) {
-      case SmartProgressState.success:
-        defaultColor = Colors.green;
-        break;
-      case SmartProgressState.failure:
-        defaultColor = Colors.red;
-        break;
-      case SmartProgressState.warning:
-        defaultColor = Colors.orange;
-        break;
-      default:
-        defaultColor = Colors.teal;
-    }
-
     final snackBar = SnackBar(
       content: Text(message),
-      backgroundColor: backgroundColor ?? defaultColor,
-      duration: duration,
+      backgroundColor: backgroundColor ?? getColor(type),
+      duration: getDuration(duration),
       behavior: behavior,
       action: action,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      showCloseIcon: showCloseIcon,
+      closeIconColor: closeIconColor,
       margin: position == SnackBarPosition.top
           ? const EdgeInsets.fromLTRB(16, 50, 16, 0)
           : const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -54,10 +43,31 @@ class SmartSnackBar {
       }
     });
   }
+
+  static Color getColor(SmartSnackBarType type) {
+    switch (type) {
+      case SmartSnackBarType.success:
+        return Colors.green;
+      case SmartSnackBarType.error:
+        return Colors.red;
+      case SmartSnackBarType.warning:
+        return Colors.orange;
+      default:
+        return Colors.teal;
+    }
+  }
+
+  /// convert duration enum to Duration object
+  static Duration getDuration(SnackBarDuration duration) {
+    switch (duration) {
+      case SnackBarDuration.long:
+        return const Duration(seconds: 3);
+      case SnackBarDuration.indefinite:
+        return const Duration(days: 365); // effectively indefinite
+      default:
+        return const Duration(seconds: 3);
+    }
+  }
 }
 
-/// Enum for snackbar position.
-enum SnackBarPosition {
-  top,
-  bottom,
-}
+// const Duration(seconds: 3)

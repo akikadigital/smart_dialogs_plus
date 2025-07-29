@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smart_dialogs_plus/util/dialog_assets.dart';
 
-import 'dialog_state.dart';
+import 'enums.dart';
 
 /// A customizable dialog widget to show loading, success, failure, or warning states.
 class SmartProgressDialog extends StatefulWidget {
