@@ -101,6 +101,14 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
       messageFontSize: 24,
       type: SmartAlertType.warning,
       loopAnimation: false,
+      alertDialogTheme: SmartAlertDialogTheme(
+        backgroundColor: Colors.green,
+        titleTextColor: Colors.white,
+        messageTextColor: Colors.grey[700],
+        confirmButtonTextColor: Colors.white,
+        confirmButtonBackgroundColor: Colors.red,
+        cancelButtonTextColor: Colors.white,
+      ),
       onConfirm: () => SmartSnackBar.show(
         context,
         "Item deleted successfully",

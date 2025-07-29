@@ -2,8 +2,6 @@
 
 **Smart Dialogs Plus** is a complete Flutter UI feedback toolkit that combines animated dialogs, alerts, snackbars, pull-to-refresh indicators, and infinite scroll loaders. Built for modern apps that value clean, intuitive, and reactive feedback for every user interaction.
 
-![Smart Dialogs Plus Banner](assets/logo.png)
-
 ---
 
 ## ✨ Features

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:smart_dialogs_plus/util/dialog_assets.dart';
 
 import 'enums.dart';
 
@@ -20,6 +21,7 @@ class SmartAlertDialog {
     bool barrierDismissible = true,
     bool? animateAsset = true,
     bool? loopAnimation = true,
+    SmartAlertDialogTheme? alertDialogTheme,
   }) {
     showDialog(
       context: context,
@@ -39,10 +41,32 @@ class SmartAlertDialog {
           color: color,
           animateAsset: animateAsset ?? true,
           loopAnimation: loopAnimation ?? true,
+          alertDialogTheme: alertDialogTheme,
         );
       },
     );
   }
+}
+
+class SmartAlertDialogTheme {
+  final Color? backgroundColor;
+  final Color? titleTextColor;
+  final Color? messageTextColor;
+  final double? buttonsBorderRadius;
+  final Color? confirmButtonTextColor;
+  final Color? confirmButtonBackgroundColor;
+  final Color? cancelButtonTextColor;
+  final Color? cancelButtonBackgroundColor;
+
+  const SmartAlertDialogTheme(
+      {this.backgroundColor,
+      this.titleTextColor,
+      this.messageTextColor,
+      this.buttonsBorderRadius,
+      this.confirmButtonTextColor,
+      this.confirmButtonBackgroundColor,
+      this.cancelButtonTextColor,
+      this.cancelButtonBackgroundColor});
 }
 
 class SmartAlertDialogWidget extends StatelessWidget {
@@ -60,6 +84,7 @@ class SmartAlertDialogWidget extends StatelessWidget {
   final bool barrierDismissible;
   final bool? animateAsset;
   final bool? loopAnimation;
+  final SmartAlertDialogTheme? alertDialogTheme;
 
   const SmartAlertDialogWidget({
     Key? key,
@@ -77,6 +102,7 @@ class SmartAlertDialogWidget extends StatelessWidget {
     this.barrierDismissible = true,
     this.animateAsset = true,
     this.loopAnimation = true,
+    this.alertDialogTheme,
   }) : super(key: key);
 
   @override
@@ -87,49 +113,93 @@ class SmartAlertDialogWidget extends StatelessWidget {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       insetPadding: const EdgeInsets.all(24),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Lottie.asset(animationAsset,
-                width: 100,
-                height: 100,
-                animate: animateAsset,
-                repeat: loopAnimation),
-            const SizedBox(height: 8),
-            Text(title,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: titleFontSize,
-                    color: accent)),
-            const SizedBox(height: 12),
-            Text(message,
-                style: TextStyle(fontSize: messageFontSize),
-                textAlign: TextAlign.center),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                if (showCancel)
-                  TextButton(
+      child: Container(
+        decoration: BoxDecoration(
+          color: alertDialogTheme?.backgroundColor ?? accent,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Lottie.asset(animationAsset,
+                  width: 100,
+                  height: 100,
+                  animate: animateAsset,
+                  repeat: loopAnimation),
+              const SizedBox(height: 8),
+              Text(title,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: titleFontSize,
+                      color: alertDialogTheme?.titleTextColor ?? accent)),
+              const SizedBox(height: 12),
+              Text(message,
+                  style: TextStyle(
+                      fontSize: messageFontSize,
+                      color: alertDialogTheme?.messageTextColor ?? accent),
+                  textAlign: TextAlign.center),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (showCancel)
+                    Row(
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      alertDialogTheme?.buttonsBorderRadius ??
+                                          8)),
+                              backgroundColor: alertDialogTheme
+                                      ?.cancelButtonBackgroundColor ??
+                                  accent,
+                              foregroundColor:
+                                  alertDialogTheme?.cancelButtonTextColor ??
+                                      Colors.white),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            onCancel?.call();
+                          },
+                          child: Text(
+                            cancelText,
+                            style: TextStyle(
+                                color:
+                                    alertDialogTheme?.cancelButtonTextColor ??
+                                        Colors.white),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                alertDialogTheme?.buttonsBorderRadius ?? 8)),
+                        backgroundColor:
+                            alertDialogTheme?.confirmButtonBackgroundColor ??
+                                accent,
+                        foregroundColor:
+                            alertDialogTheme?.confirmButtonTextColor ??
+                                Colors.white),
                     onPressed: () {
                       Navigator.of(context).pop();
-                      onCancel?.call();
+                      onConfirm?.call();
                     },
-                    child: Text(cancelText),
-                  ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: accent),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    onConfirm?.call();
-                  },
-                  child: Text(confirmText),
-                )
-              ],
-            )
-          ],
+                    child: Text(
+                      confirmText,
+                      style: TextStyle(
+                          color: alertDialogTheme?.confirmButtonTextColor ??
+                              Colors.white),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -153,15 +223,13 @@ class SmartAlertDialogWidget extends StatelessWidget {
   String _resolveAnimation(SmartAlertType type) {
     switch (type) {
       case SmartAlertType.success:
-        return 'assets/success.json';
+        return DialogAssets.success;
       case SmartAlertType.error:
-        return 'assets/error.json';
+        return DialogAssets.error;
       case SmartAlertType.warning:
-        return 'assets/warning.json';
-      case SmartAlertType.info:
-        return 'assets/info_alert.json';
+        return DialogAssets.warning;
       default:
-        return 'assets/info_alert.json';
+        return DialogAssets.info;
     }
   }
 }
