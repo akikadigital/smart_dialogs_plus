@@ -211,5 +211,3 @@ MIT License © 2025 Akika Digital
 Got ideas for more widgets or improvements? Submit an issue or pull request on GitHub. Let’s make feedback in Flutter apps smarter — together!
 
 ---
-
-> **Smart Dialogs Plus** — One toolkit to handle all user feedback in Flutter apps.
