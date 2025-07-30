@@ -17,3 +17,9 @@
 ## 0.0.5
 
 * Updates asset dependency issue
+
+## 0.0.6
+
+* Fixes snack bar top positioning
+* Adds animation to snack bar
+* Adds leading icon to snack bar

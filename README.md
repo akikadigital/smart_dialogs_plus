@@ -22,7 +22,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_dialogs_plus: ^0.0.5
+  smart_dialogs_plus: ^0.0.6
 ```
 
 Import into your Dart files:
@@ -107,28 +107,43 @@ SmartAlertDialog.showDialog(
 
 ---
 
-### 4. Show Custom Snackbar
+### 4. Show Custom Snack bar
 
 ```dart
+BuildContext context,
+    String message, {
+String? title,
+SmartSnackBarType type = SmartSnackBarType.success,
+SmartSnackBarDuration duration = SmartSnackBarDuration.short,
+Color? backgroundColor,
+SmartSnackBarPosition position = SmartSnackBarPosition.bottom,
+bool showIcon = true,
+IconData? customIcon,
+bool showCloseIcon = false,
+Color closeIconColor = Colors.white,
+SnackBarClosedReason? Function()? onClose,
+
+
 SmartSnackBar.show(
     context, message, {
     title: "Hello Title!",
     type: SmartSnackBarType.success,
-    duration: SnackBarDuration.short, // Duration of the snackbar: short, long, or indefinite
+    duration: SmartSnackBarDuration.short, // Duration of the snack bar: short, long, or indefinite
     backgroundColor: Colors.green, // Custom background color
-    behavior: SnackBarBehavior.floating, // Floating or fixed position
-    action: SnackBarAction( // Optional action button
-      label: "Undo",
-      onPressed: () {
-        // Handle action
-      },
-    ),
-    onClose: () { // Optional callback when snackbar is closed
-      // Handle close
-    },
-    position: SnackBarPosition.bottom, // Position of the snackbar: top or bottom
+    position: SmartSnackBarPosition.top, // Position of the snack bar: top or bottom
+    showIcon: true, // Show icon based on type
+    customIcon: Icons.check_circle, // Custom icon if showIcon is true
     showCloseIcon: false, // Show close icon
     closeIconColor: Colors.white, // Color of the close icon
+    onClose: () { // Optional callback when snack bar is closed
+      // Handle close
+    },
+    action: SnackBarAction( // Optional action button
+    label: "Undo",
+        onPressed: () {
+        // Handle action
+        },
+    ),
 );
 ```
 
