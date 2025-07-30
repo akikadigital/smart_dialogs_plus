@@ -23,3 +23,7 @@
 * Fixes snack bar top positioning
 * Adds animation to snack bar
 * Adds leading icon to snack bar
+
+## 0.0.7
+
+* Updates test scripts

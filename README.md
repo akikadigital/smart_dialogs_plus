@@ -22,13 +22,30 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_dialogs_plus: ^0.0.6
+  smart_dialogs_plus: ^0.0.7
 ```
 
 Import into your Dart files:
 
 ```dart
 import 'package:smart_dialogs_plus/smart_dialogs_plus.dart';
+```
+
+---
+
+## ✅ Tests
+
+Smart Dialogs Plus includes complete widget and unit tests for the following:
+
+- SmartProgressController
+- SmartProgressDialog
+- SmartListLoader
+- Enum logic and fallback behavior
+
+To run tests:
+
+```bash
+flutter test
 ```
 
 ---
