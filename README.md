@@ -38,9 +38,11 @@ import 'package:smart_dialogs_plus/smart_dialogs_plus.dart';
 Smart Dialogs Plus includes complete widget and unit tests for the following:
 
 - SmartProgressController
-- SmartProgressDialog
+- SmartAlertDialog
 - SmartListLoader
-- Enum logic and fallback behavior
+- SmartProgressDialog
+- SmartRefreshIndicator
+- SmartSnackBar
 
 To run tests:
 
