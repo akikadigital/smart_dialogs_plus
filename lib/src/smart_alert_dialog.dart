@@ -126,6 +126,7 @@ class SmartAlertDialogWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Lottie.asset(animationAsset,
+                  package: DialogAssets.package,
                   width: 100,
                   height: 100,
                   animate: animateAsset,

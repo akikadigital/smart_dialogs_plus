@@ -64,8 +64,8 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
         break;
       case SmartProgressState.success:
         content = Lottie.asset(
-          'assets/success.json',
-          // DialogAssets.success,
+          DialogAssets.success,
+          package: DialogAssets.package,
           width: widget.size,
           height: widget.size,
         );
@@ -73,6 +73,7 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
       case SmartProgressState.failure:
         content = Lottie.asset(
           DialogAssets.error,
+          package: DialogAssets.package,
           width: widget.size,
           height: widget.size,
         );
@@ -80,6 +81,7 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
       case SmartProgressState.warning:
         content = Lottie.asset(
           DialogAssets.warning,
+          package: DialogAssets.package,
           width: widget.size,
           height: widget.size,
         );
@@ -88,6 +90,7 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
         // TODO: Handle this case.
         content = Lottie.asset(
           DialogAssets.info,
+          package: DialogAssets.package,
           width: widget.size,
           height: widget.size,
         );

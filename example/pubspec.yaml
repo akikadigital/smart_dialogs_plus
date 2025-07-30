@@ -15,7 +15,3 @@ dependencies:
 
 flutter:
   uses-material-design: true
-
-  assets:
-    - assets/
-    - assets/smart_dialogs_plus/
