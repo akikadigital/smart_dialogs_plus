@@ -131,16 +131,16 @@ SmartAlertDialog.showDialog(
 ```dart
 BuildContext context,
     String message, {
-String? title,
-SmartSnackBarType type = SmartSnackBarType.success,
-SmartSnackBarDuration duration = SmartSnackBarDuration.short,
-Color? backgroundColor,
-SmartSnackBarPosition position = SmartSnackBarPosition.bottom,
-bool showIcon = true,
-IconData? customIcon,
-bool showCloseIcon = false,
-Color closeIconColor = Colors.white,
-SnackBarClosedReason? Function()? onClose,
+    String? title,
+    SmartSnackBarType type = SmartSnackBarType.success,
+    SmartSnackBarDuration duration = SmartSnackBarDuration.short,
+    Color? backgroundColor,
+    SmartSnackBarPosition position = SmartSnackBarPosition.bottom,
+    bool showIcon = true,
+    IconData? customIcon,
+    bool showCloseIcon = false,
+    Color closeIconColor = Colors.white,
+    SnackBarClosedReason? Function()? onClose,
 
 
 SmartSnackBar.show(
