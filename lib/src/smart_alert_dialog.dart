@@ -11,7 +11,7 @@ class SmartAlertDialog {
     double? titleFontSize,
     required String message,
     double? messageFontSize,
-    SmartAlertType type = SmartAlertType.info,
+    SmartAlertIconType? iconType,
     VoidCallback? onConfirm,
     VoidCallback? onCancel,
     String confirmText = "OK",
@@ -32,7 +32,7 @@ class SmartAlertDialog {
           titleFontSize: titleFontSize,
           message: message,
           messageFontSize: messageFontSize,
-          type: type,
+          iconType: iconType,
           onConfirm: onConfirm,
           onCancel: onCancel,
           confirmText: confirmText,
@@ -76,7 +76,7 @@ class SmartAlertDialogWidget extends StatelessWidget {
   final double? titleFontSize;
   final String message;
   final double? messageFontSize;
-  final SmartAlertType type;
+  final SmartAlertIconType? iconType;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
   final String confirmText;
@@ -94,7 +94,7 @@ class SmartAlertDialogWidget extends StatelessWidget {
     this.titleFontSize = 18.0,
     required this.message,
     this.messageFontSize = 14.0,
-    this.type = SmartAlertType.info,
+    this.iconType,
     this.onConfirm,
     this.onCancel,
     this.confirmText = "OK",
@@ -109,8 +109,8 @@ class SmartAlertDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color accent = color ?? _resolveColor(type);
-    String animationAsset = _resolveAnimation(type);
+    Color accent = color ?? _resolveColor(iconType);
+    String animationAsset = _resolveAnimation(iconType);
 
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -125,13 +125,20 @@ class SmartAlertDialogWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Lottie.asset(animationAsset,
-                  package: DialogAssets.package,
-                  width: 100,
-                  height: 100,
-                  animate: animateAsset,
-                  repeat: loopAnimation),
-              const SizedBox(height: 8),
+              Visibility(
+                visible: animationAsset != "",
+                child: Column(
+                  children: [
+                    Lottie.asset(animationAsset,
+                        package: DialogAssets.package,
+                        width: 100,
+                        height: 100,
+                        animate: animateAsset,
+                        repeat: loopAnimation),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+              ),
               Text(title,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -209,31 +216,33 @@ class SmartAlertDialogWidget extends StatelessWidget {
     );
   }
 
-  Color _resolveColor(SmartAlertType type) {
+  Color _resolveColor(SmartAlertIconType? type) {
     switch (type) {
-      case SmartAlertType.success:
+      case SmartAlertIconType.success:
         return Colors.green;
-      case SmartAlertType.error:
+      case SmartAlertIconType.error:
         return Colors.red;
-      case SmartAlertType.warning:
+      case SmartAlertIconType.warning:
         return Colors.orange;
-      case SmartAlertType.info:
+      case SmartAlertIconType.info:
         return Colors.blue;
       default:
         return Colors.teal;
     }
   }
 
-  String _resolveAnimation(SmartAlertType type) {
+  String _resolveAnimation(SmartAlertIconType? type) {
     switch (type) {
-      case SmartAlertType.success:
+      case SmartAlertIconType.success:
         return DialogAssets.success;
-      case SmartAlertType.error:
+      case SmartAlertIconType.info:
+        return DialogAssets.info;
+      case SmartAlertIconType.error:
         return DialogAssets.error;
-      case SmartAlertType.warning:
+      case SmartAlertIconType.warning:
         return DialogAssets.warning;
       default:
-        return DialogAssets.info;
+        return "";
     }
   }
 }

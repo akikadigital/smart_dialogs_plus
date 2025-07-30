@@ -16,7 +16,7 @@ enum SmartProgressState {
   warning,
 }
 
-enum SmartAlertType {
+enum SmartAlertIconType {
   /// Success alert type
   success,
 
@@ -44,7 +44,7 @@ enum SmartSnackBarType {
   error,
 }
 
-enum SnackBarDuration {
+enum SmartSnackBarDuration {
   /// Short duration for snackbars
   short,
 
@@ -56,7 +56,7 @@ enum SnackBarDuration {
 }
 
 /// Enum for snackbar position.
-enum SnackBarPosition {
+enum SmartSnackBarPosition {
   /// Snackbar appears at the top of the screen.
   top,
 

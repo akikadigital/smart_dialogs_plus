@@ -95,6 +95,8 @@ class _SmartProgressDialogState extends State<SmartProgressDialog> {
           height: widget.size,
         );
         break;
+      default:
+        content = SizedBox.shrink();
     }
 
     return Dialog(

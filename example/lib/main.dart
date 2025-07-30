@@ -77,19 +77,23 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   void _showSnackBar() {
-    SmartSnackBar.show(
-      context,
-      "This is a snackbar message",
-      type: SmartSnackBarType.warning,
-      duration: SnackBarDuration.short,
-      backgroundColor: Colors.red,
-    );
-    SmartSnackBar.show(context, "This is a snackbar message",
-        title: 'Some title',
+    SmartSnackBar.show(context, "This is a snack bar message",
         type: SmartSnackBarType.warning,
-        duration: SnackBarDuration.indefinite,
-        backgroundColor: Colors.green,
-        showCloseIcon: true);
+        duration: SmartSnackBarDuration.short,
+        position: SmartSnackBarPosition.top,
+        backgroundColor: Colors.red,
+        showIcon: false);
+    SmartSnackBar.show(context, "This is a snack bar message",
+        title: 'Some title',
+        type: SmartSnackBarType.success,
+        duration: SmartSnackBarDuration.indefinite,
+        position: SmartSnackBarPosition.bottom,
+        showIcon: true,
+        showCloseIcon: true, onClose: () {
+      SmartSnackBar.show(context, "Snack bar closed",
+          type: SmartSnackBarType.info, duration: SmartSnackBarDuration.short);
+      return null;
+    });
   }
 
   void _showAlertDialog() {
@@ -99,7 +103,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
       titleFontSize: 28,
       message: "Are you sure you want to delete this?",
       messageFontSize: 24,
-      type: SmartAlertType.warning,
+      iconType: SmartAlertIconType.info,
       loopAnimation: false,
       alertDialogTheme: SmartAlertDialogTheme(
         buttonsBorderRadius: BorderRadius.circular(8),
