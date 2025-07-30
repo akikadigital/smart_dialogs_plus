@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * Updates theming of alert dialog to support custom colors and styles.
+
+## 0.0.5
+
+* Updates asset dependency issue
