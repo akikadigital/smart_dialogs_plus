@@ -13,13 +13,13 @@ void main() {
     await tester.pumpWidget(TestApp(controller));
 
     // Show a dialog without auto-dismiss to avoid pending timers
-    controller.showInfo(message: 'Info', autoDismiss: false);
+    controller.showInfo(text: 'Info', autoDismiss: false);
 
     // Wait for the dialog to render
     await tester.pump();
 
     // Dialog should be visible
-    expect(find.byType(SmartProgressDialog), findsOneWidget);
+    expect(find.byType(SmartProgressDialogWidget), findsOneWidget);
     expect(find.text('Info'), findsOneWidget);
 
     // Dismiss manually
@@ -27,7 +27,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Dialog should no longer be visible
-    expect(find.byType(SmartProgressDialog), findsNothing);
+    expect(find.byType(SmartProgressDialogWidget), findsNothing);
   });
 }
 

@@ -57,16 +57,30 @@ flutter test
 ### 1. Show Progress Dialog with Controller
 
 ```dart
-final SmartProgressController _controller = SmartProgressController();
-_controller.attach(context); // Attach the controller to the context
-_controller.showLoading("Loading..."); // Show loading state
-await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
-_controller.showSuccess(message: "Successful"); // Show success state
+
+SmartProgressDialog.startProgressDialog(
+  context, // BuildContext
+  color: Colors.black87, // Color of the progress dialog
+  text: "Loading...", // Text to display in the dialog
+);
 ```
 
 ---
 
-### 2. Inline Progress Dialog
+### 2. Stop Progress Dialog
+
+```dart
+
+SmartProgressDialog.stopProgressDialog(
+  context, // BuildContext
+  SmartProgressState.success, // State of the dialog (success, error, warning)
+  text: "Successful", // Text to display in the dialog
+);
+
+```dart
+---
+
+### 3. Inline Progress Dialog
 
 ```dart
 
@@ -103,7 +117,7 @@ SmartAlertDialog.show(
 ```
 
 ---
-### 3. Show Custom Snack bar
+### 4. Show Custom Snack bar
 
 ```dart
 SmartSnackBar.show(
@@ -125,7 +139,7 @@ SmartSnackBar.show(
 
 ---
 
-### 4. Load More in Infinite Scroll List
+### 5. Load More in Infinite Scroll List
 
 ```dart
 SmartListLoader(isLoading: isLoadingMore)
@@ -133,7 +147,7 @@ SmartListLoader(isLoading: isLoadingMore)
 
 ---
 
-### 5. Pull to Refresh Integration
+### 6. Pull to Refresh Integration
 
 ```dart
 SmartRefreshIndicator(
