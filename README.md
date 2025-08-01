@@ -54,7 +54,7 @@ flutter test
 
 ## 🧠 Usage
 
-### 1. Show Progress Dialog with Controller
+### 1. Show Loading Progress Dialog
 
 ```dart
 
@@ -77,7 +77,7 @@ SmartProgressDialog.stopProgressDialog(
   text: "Successful", // Text to display in the dialog
 );
 
-```dart
+```
 ---
 
 ### 3. Inline Progress Dialog
@@ -117,7 +117,27 @@ SmartAlertDialog.show(
 ```
 
 ---
-### 4. Show Custom Snack bar
+
+
+### 4. Infinite Scroll List Loader
+
+```dart
+SmartListLoader(isLoading: isLoadingMore)
+```
+
+### 4. Pull to Refresh
+
+```dart
+SmartRefreshIndicator(
+  onRefresh: _refresh,
+  child: ListView(...),
+)
+```
+
+---
+
+
+### 6. Show Custom Snack bar
 
 ```dart
 SmartSnackBar.show(
@@ -139,7 +159,7 @@ SmartSnackBar.show(
 
 ---
 
-### 5. Load More in Infinite Scroll List
+### 7. Load More in Infinite Scroll List
 
 ```dart
 SmartListLoader(isLoading: isLoadingMore)
@@ -147,7 +167,7 @@ SmartListLoader(isLoading: isLoadingMore)
 
 ---
 
-### 6. Pull to Refresh Integration
+### 8. Pull to Refresh Integration
 
 ```dart
 SmartRefreshIndicator(
