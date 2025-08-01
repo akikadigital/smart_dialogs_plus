@@ -8,8 +8,8 @@ class SmartAlertDialog {
   static void show(
     BuildContext context, {
     required String title,
-    double? titleFontSize,
     required String message,
+    double? titleFontSize,
     double? messageFontSize,
     SmartAlertIconType? iconType,
     VoidCallback? onConfirm,
@@ -17,7 +17,6 @@ class SmartAlertDialog {
     String confirmText = "OK",
     String cancelText = "Cancel",
     bool showCancel = true,
-    Color? color,
     bool barrierDismissible = true,
     bool? animateAsset = true,
     bool? loopAnimation = true,
@@ -29,8 +28,8 @@ class SmartAlertDialog {
       builder: (BuildContext context) {
         return SmartAlertDialogWidget(
           title: title,
-          titleFontSize: titleFontSize,
           message: message,
+          titleFontSize: titleFontSize,
           messageFontSize: messageFontSize,
           iconType: iconType,
           onConfirm: onConfirm,
@@ -38,7 +37,6 @@ class SmartAlertDialog {
           confirmText: confirmText,
           cancelText: cancelText,
           showCancel: showCancel,
-          color: color,
           animateAsset: animateAsset ?? true,
           loopAnimation: loopAnimation ?? true,
           alertDialogTheme: alertDialogTheme,
@@ -58,6 +56,7 @@ class SmartAlertDialogTheme {
   final Color? confirmButtonBackgroundColor;
   final Color? cancelButtonTextColor;
   final Color? cancelButtonBackgroundColor;
+  final SmartAlertDialogButtonAlignment? buttonAlignment;
 
   const SmartAlertDialogTheme(
       {this.backgroundColor,
@@ -67,7 +66,8 @@ class SmartAlertDialogTheme {
       this.confirmButtonTextColor,
       this.confirmButtonBackgroundColor,
       this.cancelButtonTextColor,
-      this.cancelButtonBackgroundColor});
+      this.cancelButtonBackgroundColor,
+      this.buttonAlignment});
 }
 
 /// A widget that displays a customizable alert dialog with animations.
@@ -152,7 +152,8 @@ class SmartAlertDialogWidget extends StatelessWidget {
                   textAlign: TextAlign.center),
               const SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment:
+                    _resolveButtonAlignment(alertDialogTheme?.buttonAlignment),
                 children: [
                   if (showCancel)
                     Row(
@@ -216,6 +217,20 @@ class SmartAlertDialogWidget extends StatelessWidget {
     );
   }
 
+  /// Resolve alertDialogTheme to MainAxisAlignment.end
+  MainAxisAlignment _resolveButtonAlignment(
+      SmartAlertDialogButtonAlignment? alignment) {
+    switch (alignment) {
+      case SmartAlertDialogButtonAlignment.center:
+        return MainAxisAlignment.center;
+      case SmartAlertDialogButtonAlignment.start:
+        return MainAxisAlignment.start;
+      default:
+        return MainAxisAlignment.end;
+    }
+  }
+
+  /// Resolve the color based on the icon type.
   Color _resolveColor(SmartAlertIconType? type) {
     switch (type) {
       case SmartAlertIconType.success:
@@ -231,6 +246,7 @@ class SmartAlertDialogWidget extends StatelessWidget {
     }
   }
 
+  /// Resolve the animation asset based on the icon type.
   String _resolveAnimation(SmartAlertIconType? type) {
     switch (type) {
       case SmartAlertIconType.success:

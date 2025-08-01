@@ -63,3 +63,15 @@ enum SmartSnackBarPosition {
   /// Snackbar appears at the bottom of the screen.
   bottom,
 }
+
+/// Enum for the alignment of buttons in the SmartAlertDialog.
+enum SmartAlertDialogButtonAlignment {
+  /// Buttons are aligned to the left.
+  start,
+
+  /// Buttons are aligned to the center.
+  center,
+
+  /// Buttons are aligned to the right.
+  end,
+}

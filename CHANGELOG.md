@@ -27,3 +27,7 @@
 ## 0.0.7
 
 * Updates test scripts
+
+## 0.0.8
+
+* Updates alert dialog button alignment options
