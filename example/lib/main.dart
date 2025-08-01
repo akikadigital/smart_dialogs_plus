@@ -25,7 +25,6 @@ class ExampleHomePage extends StatefulWidget {
 }
 
 class _ExampleHomePageState extends State<ExampleHomePage> {
-  final SmartProgressController _controller = SmartProgressController();
   final List<String> _items = List.generate(20, (i) => 'Item ${i + 1}');
   bool _isLoadingMore = false;
 

@@ -166,7 +166,7 @@ class _SmartProgressDialogWidgetState extends State<SmartProgressDialogWidget> {
         break;
       default:
         textColor = widget.color;
-        content = SizedBox.shrink();
+        content = const SizedBox.shrink();
     }
 
     return Dialog(
