@@ -15,7 +15,7 @@ class SmartSnackBar {
     IconData? customIcon,
     bool showCloseIcon = false,
     Color closeIconColor = Colors.white,
-    SnackBarClosedReason? Function()? onClose,
+    Function()? onClose,
   }) {
     final overlay = Overlay.of(context);
 

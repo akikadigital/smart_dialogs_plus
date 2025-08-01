@@ -22,7 +22,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_dialogs_plus: ^0.0.7
+  smart_dialogs_plus: ^0.0.8
 ```
 
 Import into your Dart files:
@@ -57,12 +57,11 @@ flutter test
 ### 1. Show Progress Dialog with Controller
 
 ```dart
-final controller = SmartProgressController();
-controller.attach(context);
-
-controller.showLoading("Please wait...");
-await Future.delayed(Duration(seconds: 2));
-controller.showSuccess("All done!");
+final SmartProgressController _controller = SmartProgressController();
+_controller.attach(context); // Attach the controller to the context
+_controller.showLoading("Loading..."); // Show loading state
+await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
+_controller.showSuccess(message: "Successful"); // Show success state
 ```
 
 ---
@@ -72,77 +71,41 @@ controller.showSuccess("All done!");
 ```dart
 
 SmartAlertDialog.show(
-    context, // Build context
-    title: "Alert Title", // Custom title
-    titleFontSize: 28, // Custom title font size
-    message: "Alert message goes here.", // Custom message
-    messageFontSize: 24, // Custom message font size
-    type: SmartAlertType.warning, // Alert type: warning, error, success, info
-    loopAnimation: false, // Enable/disable looping animation
+    context, // BuildContext
+    title: "Delete Item", // Title of the dialog
+    titleFontSize: 28, // Font size for the title
+    message: "Are you sure you want to delete this?", // Message to display
+    messageFontSize: 24, // Font size for the message
+    iconType: SmartAlertIconType.info, // Type of icon to show (info, warning, success, error)
+    animateAsset: true, // Whether to animate the icon
+    loopAnimation: false, // Whether to loop the animation
+    barrierDismissible: true, // Whether to dismiss the dialog on tapping outside
+    confirmText: "Delete", // Text for the confirm button
+    showCancel: true, // Whether to show the cancel button
+    cancelText: "Cancel", // Text for the cancel button
+    alertDialogTheme: SmartAlertDialogTheme( // Custom theme for the dialog
+        buttonsBorderRadius: BorderRadius.circular(8), // Border radius for buttons
+        backgroundColor: Colors.green, // Background color of the dialog
+        titleTextColor: Colors.white, // Color of the title text
+        messageTextColor: Colors.grey[700], // Color of the message text
+        confirmButtonTextColor: Colors.white, // Color of the confirm button text
+        confirmButtonBackgroundColor: Colors.red, // Background color of the confirm button
+        cancelButtonTextColor: Colors.white, // Color of the cancel button text
+    ),
     onConfirm: () {
-      // Handle confirmation
+        // Handle confirm action
     },
-    alertDialogTheme: SmartAlertDialogTheme( // Custom theme for the alert dialog
-        backgroundColor: Colors.white, // Background color
-        titleTextColor: Colors.black, // Title text color
-        messageTextColor: Colors.grey, // Message text color
-        buttonsBorderRadius: BorderRadius.circular(8), // Button border radius
-        confirmButtonTextColor: Colors.white, // Confirm button text color
-        confirmButtonBackgroundColor: Colors.blue, // Confirm button background color
-        cancelButtonTextColor: Colors.white, // Cancel button text color
-        cancelButtonBackgroundColor: Colors.red, // Cancel button background color
+    onCancel: () {
+        // Handle cancel action
     }
 );
-```
-
----
-
-### 3. Show Alert Dialog
-
-```dart
-SmartAlertDialog.showDialog(
-    context, { // Build context
-    title: "Alert Title", // Custom title
-    titleFontSize: 28, // Custom title font size
-    message: "This is an alert message.", // Custom message
-    messageFontSize: 24, // Custom message font size
-    type: SmartAlertType.info, // Alert type: info, warning, error, success
-    onConfirm: () { // Optional callback for confirm action
-      // Handle confirmation
-    },
-    onCancel: () { // Optional callback for cancel action
-      // Handle cancellation
-    },
-    confirmText: "OK", // Custom button texts
-    cancelText: "Cancel", // Custom button texts
-    showCancel: true, // Show cancel button
-    color: Colors.blue, // Custom color for the dialog
-    barrierDismissible: true, // Allow dismissing by tapping outside
-    animateAsset: true, // Show animated asset
-    loopAnimation: true, // Loop the animation
-);
 
 ```
 
 ---
-
-### 4. Show Custom Snack bar
+### 3. Show Custom Snack bar
 
 ```dart
-BuildContext context,
-    String message, {
-    String? title,
-    SmartSnackBarType type = SmartSnackBarType.success,
-    SmartSnackBarDuration duration = SmartSnackBarDuration.short,
-    Color? backgroundColor,
-    SmartSnackBarPosition position = SmartSnackBarPosition.bottom,
-    bool showIcon = true,
-    IconData? customIcon,
-    bool showCloseIcon = false,
-    Color closeIconColor = Colors.white,
-    SnackBarClosedReason? Function()? onClose,
-
-
 SmartSnackBar.show(
     context, message, {
     title: "Hello Title!",
@@ -157,18 +120,12 @@ SmartSnackBar.show(
     onClose: () { // Optional callback when snack bar is closed
       // Handle close
     },
-    action: SnackBarAction( // Optional action button
-    label: "Undo",
-        onPressed: () {
-        // Handle action
-        },
-    ),
 );
 ```
 
 ---
 
-### 5. Load More in Infinite Scroll List
+### 4. Load More in Infinite Scroll List
 
 ```dart
 SmartListLoader(isLoading: isLoadingMore)
@@ -176,7 +133,7 @@ SmartListLoader(isLoading: isLoadingMore)
 
 ---
 
-### 6. Pull to Refresh Integration
+### 5. Pull to Refresh Integration
 
 ```dart
 SmartRefreshIndicator(

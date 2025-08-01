@@ -83,6 +83,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
         position: SmartSnackBarPosition.top,
         backgroundColor: Colors.red,
         showIcon: false);
+
     SmartSnackBar.show(context, "This is a snack bar message",
         title: 'Some title',
         type: SmartSnackBarType.success,
@@ -97,29 +98,39 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   void _showAlertDialog() {
-    SmartAlertDialog.show(
-      context,
-      title: "Delete Item",
-      titleFontSize: 28,
-      message: "Are you sure you want to delete this?",
-      messageFontSize: 24,
-      iconType: SmartAlertIconType.info,
-      loopAnimation: false,
-      alertDialogTheme: SmartAlertDialogTheme(
-        buttonsBorderRadius: BorderRadius.circular(8),
-        backgroundColor: Colors.green,
-        titleTextColor: Colors.white,
-        messageTextColor: Colors.grey[700],
-        confirmButtonTextColor: Colors.white,
-        confirmButtonBackgroundColor: Colors.red,
-        cancelButtonTextColor: Colors.white,
-      ),
-      onConfirm: () => SmartSnackBar.show(
-        context,
-        "Item deleted successfully",
-        type: SmartSnackBarType.success,
-      ),
-    );
+    SmartAlertDialog.show(context,
+        title: "Delete Item",
+        titleFontSize: 28,
+        message: "Are you sure you want to delete this?",
+        messageFontSize: 24,
+        iconType: SmartAlertIconType.info,
+        animateAsset: true,
+        loopAnimation: false,
+        barrierDismissible: true,
+        confirmText: "Delete",
+        showCancel: true,
+        cancelText: "Cancel",
+        alertDialogTheme: SmartAlertDialogTheme(
+          buttonsBorderRadius: BorderRadius.circular(8),
+          backgroundColor: Colors.green,
+          titleTextColor: Colors.white,
+          messageTextColor: Colors.grey[700],
+          confirmButtonTextColor: Colors.white,
+          confirmButtonBackgroundColor: Colors.red,
+          cancelButtonTextColor: Colors.white,
+        ),
+        onConfirm: () => SmartSnackBar.show(
+              context,
+              "Item deleted successfully",
+              type: SmartSnackBarType.success,
+            ),
+        onCancel: () {
+          SmartSnackBar.show(
+            context,
+            "Item deletion cancelled",
+            type: SmartSnackBarType.info,
+          );
+        });
   }
 
   @override
