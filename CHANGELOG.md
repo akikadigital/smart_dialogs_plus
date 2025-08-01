@@ -31,3 +31,4 @@
 ## 0.0.8
 
 * Updates alert dialog button alignment options
+* Simplifies snack bar usage
