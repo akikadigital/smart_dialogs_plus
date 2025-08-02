@@ -22,7 +22,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_dialogs_plus: ^0.0.8
+  smart_dialogs_plus: ^0.0.9
 ```
 
 Import into your Dart files:
@@ -58,7 +58,7 @@ flutter test
 
 ```dart
 
-SmartProgressDialog.startProgressDialog(
+SmartProgressDialog.showProgressDialog(
   context, // BuildContext
   color: Colors.black87, // Color of the progress dialog
   text: "Loading...", // Text to display in the dialog
@@ -67,11 +67,11 @@ SmartProgressDialog.startProgressDialog(
 
 ---
 
-### 2. Stop Smart Progress Dialog
+### 2. Dismiss Smart Progress Dialog
 
 ```dart
 
-SmartProgressDialog.stopProgressDialog(
+SmartProgressDialog.dismissProgressDialog(
   context, // BuildContext
   SmartProgressState.success, // State of the dialog (success, error, warning)
   text: "Successful", // Text to display in the dialog

@@ -46,10 +46,10 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   void _simulateSuccess() async {
-    SmartProgressDialog.startProgressDialog(context,
+    SmartProgressDialog.showProgressDialog(context,
         color: Colors.black87, text: "Loading...");
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
-    SmartProgressDialog.stopProgressDialog(
+    SmartProgressDialog.dismissProgressDialog(
       context,
       SmartProgressState.success,
       text: "Successful",
@@ -57,9 +57,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   void _simulateInfo() async {
-    SmartProgressDialog.startProgressDialog(context, text: "Processing...");
+    SmartProgressDialog.showProgressDialog(context, text: "Processing...");
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
-    SmartProgressDialog.stopProgressDialog(
+    SmartProgressDialog.dismissProgressDialog(
       context,
       SmartProgressState.info,
       text: "This is an Info!",
@@ -67,9 +67,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   void _simulateWarning() async {
-    SmartProgressDialog.startProgressDialog(context, text: "Processing...");
+    SmartProgressDialog.showProgressDialog(context, text: "Processing...");
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
-    SmartProgressDialog.stopProgressDialog(
+    SmartProgressDialog.dismissProgressDialog(
       context,
       SmartProgressState.warning,
       text: "This is a warning!",
@@ -77,9 +77,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   void _simulateError() async {
-    SmartProgressDialog.startProgressDialog(context, text: "Processing...");
+    SmartProgressDialog.showProgressDialog(context, text: "Processing...");
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
-    SmartProgressDialog.stopProgressDialog(
+    SmartProgressDialog.dismissProgressDialog(
       context,
       SmartProgressState.error,
       text: "There was an Error!",

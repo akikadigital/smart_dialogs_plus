@@ -183,7 +183,6 @@ DA:160,1
 DA:163,2
 DA:164,2
 DA:168,0
-DA:169,0
 DA:172,3
 DA:173,6
 DA:174,6
@@ -194,7 +193,7 @@ DA:181,18
 DA:183,3
 DA:184,6
 DA:185,3
-LF:61
+LF:60
 LH:47
 end_of_record
 SF:lib/src/smart_refresh_indicator.dart

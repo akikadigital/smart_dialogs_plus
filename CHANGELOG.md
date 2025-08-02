@@ -32,3 +32,7 @@
 
 * Updates alert dialog button alignment options
 * Simplifies snack bar usage
+
+## 0.0.9
+
+* Updates snack bar to hide unnecessary parameters

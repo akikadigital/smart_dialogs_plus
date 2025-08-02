@@ -1,6 +1,6 @@
 name: smart_dialogs_plus
 description: "A Flutter package for smart animated dialogs, alerts, snackbars, and loaders with controller and Lottie support."
-version: 0.0.8
+version: 0.0.9
 homepage: https://pub.dev/packages/smart_dialogs_plus
 repository: https://github.com/akikadigital/smart_dialogs_plus
 issue_tracker: https://github.com/akikadigital/smart_dialogs_plus/issues
