@@ -47,7 +47,7 @@ class SmartProgressController {
 
   /// Show a success animation and dismiss automatically.
   void showSuccess({
-    required String text,
+    String? text,
     Color? color,
     bool autoDismiss = true,
   }) {
@@ -57,12 +57,12 @@ class SmartProgressController {
       color: color ?? Colors.green,
       autoDismiss: autoDismiss,
     );
-    if (autoDismiss) _autoDismiss();
+    if (autoDismiss) _autoDismiss(text == '' ? 3 : 0);
   }
 
   /// Show a success animation and dismiss automatically.
   void showInfo({
-    required String text,
+    String? text,
     Color? color,
     bool autoDismiss = true,
   }) {
@@ -72,12 +72,12 @@ class SmartProgressController {
       color: color ?? Colors.blue,
       autoDismiss: autoDismiss,
     );
-    if (autoDismiss) _autoDismiss();
+    if (autoDismiss) _autoDismiss(text == '' ? 3 : 0);
   }
 
   /// Show a warning animation and dismiss automatically.
   void showWarning({
-    required String text,
+    String? text,
     Color? color,
     bool autoDismiss = true,
   }) {
@@ -87,12 +87,12 @@ class SmartProgressController {
       color: color ?? Colors.orange,
       autoDismiss: autoDismiss,
     );
-    if (autoDismiss) _autoDismiss();
+    if (autoDismiss) _autoDismiss(text == '' ? 3 : 0);
   }
 
   /// Show a failure animation and dismiss automatically.
   void showFailure({
-    required String text,
+    String? text,
     Color? color,
     bool autoDismiss = true,
   }) {
@@ -102,7 +102,7 @@ class SmartProgressController {
       color: color ?? Colors.red,
       autoDismiss: autoDismiss,
     );
-    if (autoDismiss) _autoDismiss();
+    if (autoDismiss) _autoDismiss(text == '' ? 3 : 0);
   }
 
   /// Manually dismiss the dialog.
@@ -113,8 +113,9 @@ class SmartProgressController {
   }
 
   /// Automatically dismiss the dialog after a short delay.
-  void _autoDismiss() {
-    Future.delayed(const Duration(seconds: (3)), () {
+  void _autoDismiss(int timeoutSeconds) {
+    if (timeoutSeconds == 0) dismiss();
+    Future.delayed(Duration(seconds: (timeoutSeconds)), () {
       dismiss();
     });
   }

@@ -26,19 +26,22 @@ class SmartProgressDialog {
 
   /// Stop the progress dialog and show a success, error, or warning state.
   static void dismissProgressDialog(
-    BuildContext context,
-    SmartProgressState state, {
+    BuildContext context, {
+    SmartProgressState? state,
     String? text,
   }) {
     if (Navigator.canPop(context)) {
       Navigator.pop(context);
     }
-    _createSmartProgressDialogWidget(
-      context,
-      state: state,
-      text: text,
-      autoDismiss: true,
-    );
+
+    if (text != null || state != null) {
+      _createSmartProgressDialogWidget(
+        context,
+        state: state ?? SmartProgressState.success,
+        text: text,
+        autoDismiss: true,
+      );
+    }
   }
 
   /// Show a dialog with the specified state and optional text.

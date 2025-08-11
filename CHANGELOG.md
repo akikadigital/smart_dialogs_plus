@@ -36,3 +36,7 @@
 ## 0.0.9
 
 * Updates snack bar to hide unnecessary parameters
+
+## 0.1.0
+
+*  Updates dismissing progress dialog

@@ -71,11 +71,7 @@ SmartProgressDialog.showProgressDialog(
 
 ```dart
 
-SmartProgressDialog.dismissProgressDialog(
-  context, // BuildContext
-  SmartProgressState.success, // State of the dialog (success, error, warning)
-  text: "Successful", // Text to display in the dialog
-);
+SmartProgressDialog.dismissProgressDialog(context); // BuildContext
 
 ```
 ---

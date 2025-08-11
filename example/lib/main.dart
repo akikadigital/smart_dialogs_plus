@@ -49,11 +49,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     SmartProgressDialog.showProgressDialog(context,
         color: Colors.black87, text: "Loading...");
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
-    SmartProgressDialog.dismissProgressDialog(
-      context,
-      SmartProgressState.success,
-      text: "Successful",
-    ); // Show success state
+    SmartProgressDialog.dismissProgressDialog(context); // Show success state
+    SmartSnackBar.show(context, "Operation completed successfully",
+        type: SmartSnackBarType.info, duration: SmartSnackBarDuration.short);
   }
 
   void _simulateInfo() async {
@@ -61,7 +59,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
     SmartProgressDialog.dismissProgressDialog(
       context,
-      SmartProgressState.info,
+      state: SmartProgressState.info,
       text: "This is an Info!",
     ); // Show info state
   }
@@ -71,7 +69,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
     SmartProgressDialog.dismissProgressDialog(
       context,
-      SmartProgressState.warning,
+      state: SmartProgressState.warning,
       text: "This is a warning!",
     ); // Show info state
   }
@@ -81,7 +79,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
     SmartProgressDialog.dismissProgressDialog(
       context,
-      SmartProgressState.error,
+      state: SmartProgressState.error,
       text: "There was an Error!",
     ); // Show info state
   }
